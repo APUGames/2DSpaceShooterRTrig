@@ -8,8 +8,7 @@ public class Enemy : MonoBehaviour
 
  
     private bool hit = false;
-    private float lifetime;
-    private float xRange = 4;
+
     private float ySpawnPos = 8;
 
     public float minSpeed;
@@ -35,14 +34,14 @@ public class Enemy : MonoBehaviour
         
     }
 
-    
+ 
   
    public  void RandomPos()
     {
         if(transform.position.y < endZ)
         {
-            float newX = Random.Range(-xRange, xRange);
-            transform.position = new Vector3(newX, startPos.y);
+            //float newX = Random.Range(-xRange, xRange);
+           // transform.position = new Vector3(newX, startPos.y);
         }
     }
 
@@ -59,15 +58,14 @@ public class Enemy : MonoBehaviour
         if (collision != null && collision.gameObject.CompareTag("Bullet"))
         {
             hit = true;
-            Destroy(this.gameObject);
-            Destroy(collision.gameObject);
+            Deactivate();
         }
       
     }
     private void Deactivate()
     {
-        lifetime = 0f;
-       // gameObject.SetActive(false);
+        //lifetime = 0f;
+        gameObject.SetActive(false);
     }
 
 

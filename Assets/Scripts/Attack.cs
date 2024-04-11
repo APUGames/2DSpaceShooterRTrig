@@ -8,22 +8,25 @@ public class Attack : MonoBehaviour
     [SerializeField] private float attackCooldown;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject[] bullets;
-  
+    private projectile projectile;
 
 
-  
+
+
     private float cooldownTimer = Mathf.Infinity;
 
+    public void Awake()
+    {
+     
+        projectile = FindObjectOfType<projectile>();
+
+    }
 
     // Update is called once per frame
     private void Update()
     {
         cooldownTimer += Time.deltaTime;
-
-        if (Input.GetKeyDown(KeyCode.Space) && cooldownTimer > attackCooldown)
-        {
-            
-        }
+         
     }
 
     private void Shoot()
@@ -32,7 +35,7 @@ public class Attack : MonoBehaviour
         // resets the position of the fire ball to the firepoint
         bullets[FindBullet()].transform.position = firePoint.position;
         // this makes the fireball shoot
-        bullet.GetComponent<projectile>().setDirection(1f);
+        //bullets.GetComponent<projectile>().setDirection(1f);
     }
 
     private int FindBullet()

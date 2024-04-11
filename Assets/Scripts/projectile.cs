@@ -23,8 +23,8 @@ public class projectile : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         playerController = FindObjectOfType<PlayerController>();
        
-
     }
+
 
     // Update is called once per frame
     private void Update()

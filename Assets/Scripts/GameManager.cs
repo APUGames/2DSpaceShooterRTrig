@@ -71,62 +71,15 @@ public class GameManager : MonoBehaviour
         gameOverText.gameObject.SetActive(false);
         isGameActive = true;
 
+        /*
         titleText.gameObject.SetActive(true);
         InitializeEnemyWave(initialWaveSize);
-        //SpawnEnemy();
-        
+        SpawnEnemy();
+        */
    
         titleScreen.gameObject.SetActive(false);
 
     }
-
-
-    private void InitializeEnemyWave(int size)
-    {
-
-        for (int i = 0; i < size; i++)
-        {
-            Quaternion quaternion = Quaternion.Euler(0f, 0f, 0f);
-            Vector3 up = new Vector3(0, 8);
-            GameObject enemyObject = Instantiate(enemyPrefab,up,quaternion);
-           
-            enemies.Add(enemyObject);
-            enemyObject.SetActive(true);
-        }
-    }
-
-    private void SpawnEnemy()
-    {
-      
-        if(isGameActive)
-        {
-            GameObject enemy = GetInactiveEnemy();
-           /*
-             rSpawnPos = Vector3.down * Random.Range(minSpeed, maxSpeed);
-             rForce = new Vector3(UnityEngine.Random.Range(-xRange, xRange), ySpawnPos,0);
-
-                enemy.transform.position = rSpawnPos;
-                enemy.GetComponent<Rigidbody2D>().velocity = rForce;
-                enemy.SetActive(true);
-          */
-           
-        }
-       
-    }
-
-    private GameObject GetInactiveEnemy()
-    {
-        foreach (GameObject enemyObject in enemies)
-        {
-            if (!enemyObject.activeInHierarchy)
-            {
-                return enemyObject;
-            }
-        }
-        return null;
-    }
-
-
 
     public void GameOver()
     {
@@ -140,6 +93,58 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Debug.Log("Hit restart");
     }
+
+    /*
+   private void InitializeEnemyWave(int size)
+   {
+
+       for (int i = 0; i < size; i++)
+       {
+           Quaternion quaternion = Quaternion.Euler(0f, 0f, 0f);
+           Vector3 up = new Vector3(0, 8);
+           GameObject enemyObject = Instantiate(enemyPrefab,up,quaternion);
+
+           enemies.Add(enemyObject);
+           enemyObject.SetActive(true);
+       }
+   }
+
+  private void SpawnEnemy()
+   {
+
+       if(isGameActive)
+       {
+           GameObject enemy = GetInactiveEnemy();
+
+            rSpawnPos = Vector3.down * Random.Range(minSpeed, maxSpeed);
+            rForce = new Vector3(UnityEngine.Random.Range(-xRange, xRange), ySpawnPos,0);
+
+              // enemy.transform.position = rSpawnPos;
+               enemy.GetComponent<Rigidbody2D>().velocity = rForce;
+               enemy.SetActive(true);
+
+
+       }
+
+   }
+
+
+
+   private GameObject GetInactiveEnemy()
+   {
+       foreach (GameObject enemyObject in enemies)
+       {
+           if (!enemyObject.activeInHierarchy)
+           {
+               return enemyObject;
+           }
+       }
+       return null;
+   }
+   */
+
+
 }

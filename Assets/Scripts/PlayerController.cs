@@ -42,6 +42,9 @@ public class PlayerController : MonoBehaviour
 
             player.velocity = new Vector2(horizontalInput * speed, verticalInput * upForce);
         }
+
+
+
        
 
     }
@@ -54,6 +57,8 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+
+
     public void TakeDamage(int damage)
     {
         health -= damage;
